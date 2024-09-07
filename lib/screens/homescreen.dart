@@ -114,6 +114,7 @@ class _HomescreenState extends State<Homescreen> {
                         ),
                         //card for hospital and blood bank
                         const SizedBox(width: 20),
+
                         Column(
                           children: [
                             Expanded(
@@ -225,7 +226,7 @@ class _HomescreenState extends State<Homescreen> {
                     ),
                   ),
                   const SizedBox(height: 20),
-
+               //  Image.network('http://192.168.0.100:8000/video_feed'),
                   //feature doctors
                   Row(
                     children: [
