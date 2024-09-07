@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rekhdekh/screens/homescreen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -10,7 +11,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   final _screens = [
-    Container(),
+    const Homescreen(),
     Container(),
     Container(),
     Container(),
