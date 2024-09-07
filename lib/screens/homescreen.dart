@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rekhdekh/widgets/color.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -10,11 +11,11 @@ class Homescreen extends StatefulWidget {
 class _HomescreenState extends State<Homescreen> {
   final catNames = ['brain', 'heart', 'lungs', 'kidney', 'ear'];
   final catImages = [
-    'assets/brain.png',
-    'assets/heart.png',
-    'assets/lungs.png',
-    'assets/kidney.png',
-    'assets/ear.png',
+    'assets/hospitals.png',
+    'assets/hospitals.png',
+    'assets/hospitals.png',
+    'assets/hospitals.png',
+    'assets/hospitals.png',
   ];
   final docImg = [
     'assets/doctor.png',
@@ -82,20 +83,31 @@ class _HomescreenState extends State<Homescreen> {
 
                   // card for doctor ,hospital and  blood bank
                   const SizedBox(height: 20),
-                  Container(
+                  SizedBox(
                     height: 200,
                     width: MediaQuery.of(context).size.width,
                     child: Row(
                       children: [
-                        const Expanded(
+                        Expanded(
                           child: Card(
+                            color: primaryColor,
                             elevation: 5,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                // Image.asset('assets/doctor.png', height: 50),
-                                SizedBox(height: 10),
-                                Text('Doctors', style: TextStyle(fontSize: 20)),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Text('Video Consultation',
+                                    style: TextStyle(fontSize: 20)),
+                                const Text('Verified doctors',
+                                    style: TextStyle(fontSize: 14)),
+                                Flexible(
+                                  child: Align(
+                                      alignment: Alignment.center,
+                                      child: Image.asset('assets/hospitals.png',
+                                          height: 150)),
+                                ),
                               ],
                             ),
                           ),
@@ -110,7 +122,7 @@ class _HomescreenState extends State<Homescreen> {
                                 height:
                                     180, // Increased height to accommodate larger image
                                 child: Card(
-                                  color: Colors.green,
+                                  color: primaryColor,
                                   elevation: 2,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
@@ -138,10 +150,10 @@ class _HomescreenState extends State<Homescreen> {
                                         ),
                                         // Right side: Image widget
                                         Flexible(
-                                          
                                           child: Container(
                                             margin: const EdgeInsets.only(
-                                                left: 10), // Margin between text and image
+                                                left:
+                                                    10), // Margin between text and image
                                             height:
                                                 120, // Set desired height for the image
                                             // Set desired width for the image
@@ -156,13 +168,13 @@ class _HomescreenState extends State<Homescreen> {
                               ),
                             ),
                             const SizedBox(height: 20),
-                           Expanded(
+                            Expanded(
                               child: Container(
                                 width: 180,
                                 height:
                                     180, // Increased height to accommodate larger image
                                 child: Card(
-                                  color: Colors.green,
+                                  color: primaryColor,
                                   elevation: 2,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
@@ -190,10 +202,10 @@ class _HomescreenState extends State<Homescreen> {
                                         ),
                                         // Right side: Image widget
                                         Flexible(
-                                          
                                           child: Container(
                                             margin: const EdgeInsets.only(
-                                                left: 10), // Margin between text and image
+                                                left:
+                                                    10), // Margin between text and image
                                             height:
                                                 120, // Set desired height for the image
                                             // Set desired width for the image
@@ -207,11 +219,125 @@ class _HomescreenState extends State<Homescreen> {
                                 ),
                               ),
                             ),
-                           ],
+                          ],
                         )
                       ],
                     ),
-                  )
+                  ),
+                  const SizedBox(height: 20),
+
+                  //feature doctors
+                  Row(
+                    children: [
+                      const Text('Feature  Doctors',
+                          style: TextStyle(fontSize: 20, color: Colors.black)),
+                      const Spacer(),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text('View all',
+                            style:
+                                TextStyle(fontSize: 16, color: primaryColor)),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      //list videw usign card showing doctor name , image, price and rating
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    height: 200,
+                    child: ListView.builder(
+                      itemCount: 5,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          margin: const EdgeInsets.all(
+                              8), // Added margin for spacing
+                          child: Card(
+                            elevation: 3,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  // CircleAvatar for the image
+                                  const CircleAvatar(
+                                    radius: 30, // Adjust the size of the avatar
+                                    backgroundImage:
+                                        AssetImage('assets/hospitals.png'),
+                                  ),
+                                  const SizedBox(
+                                      height:
+                                          10), // Spacing between image and text
+                                  const Text(
+                                    'Dr Ram Sherpa',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14),
+                                  ),
+                                  Text(
+                                    'Heart Specialist',
+                                    style: TextStyle(
+                                        color: Colors.grey[600], fontSize: 12),
+                                  ),
+                                  const Text(
+                                    'Rs 500/hour',
+                                    style: TextStyle(
+                                        color: Colors.green, fontSize: 12),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  //Services
+                  const Text('Find Your Services',
+                      style: TextStyle(fontSize: 20, color: Colors.black)),
+
+                  const SizedBox(height: 20),
+
+                  //GridView for services which contain image and text
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: 5,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
+                    itemBuilder: (context, index) {
+                      return Card(
+                        elevation: 3,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // CircleAvatar for the image
+                              CircleAvatar(
+                                radius: 20, // Adjust the size of the avatar
+                                backgroundImage: AssetImage(catImages[index]),
+                              ),
+                              const SizedBox(
+                                  height:
+                                      10), // Spacing between image and text
+                              Text(
+                                catNames[index],
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 14),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
